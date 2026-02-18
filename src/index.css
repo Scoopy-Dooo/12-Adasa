@@ -1,0 +1,62 @@
+@import "tailwindcss";
+@layer base {
+  body {
+    font-family: "Tajawal", sans-serif;
+    padding-top: 4rem;
+  }
+  ::selection {
+    color: var(--color-white);
+    background-color: var(--color-main);
+    @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+  }
+  img {
+    width: 100%;
+  }
+}
+@theme {
+  --color-main-half: #fa9a1d;
+  --color-main: #f97316;
+  --color-main-subtle: #f9731620;
+  --color-main-strong: #ea580c;
+  --color-secondary: #737373;
+  --color-secondary-strong: #161616;
+  --color-secondary-light: #3f3f3f;
+  --color-green-500: #00c950;
+  --color-purple-500: #ad46ff;
+  --color-blue-500: #2b7fff;
+  --color-orange-600: #f54900;
+}
+@layer utilities {
+  .font-tajawal {
+    font-family: "Tajawal", sans-serif;
+  }
+}
+@layer components {
+  .myContainer {
+    @apply container mx-auto max-w-7xl px-4;
+  }
+  .link {
+    @apply block px-5 py-2 m-0 rounded-xl md:hover:text-gray-200 max-md:hover:bg-secondary-light max-md:hover:text-white cursor-pointer  max-md:mt-1 md:rounded-full text-secondary md:border-0 active:bg-main max-md:active:text-main-strong active:text-white max-md:active:border-main max-md:active:bg-main-subtle max-md:active:border;
+  }
+  .header-card {
+    @apply py-5 rounded-3xl bg-secondary-strong border border-secondary-light shadow-2xs shadow-main  hover:scale-105 duration-500;
+  }
+  .post-card {
+    @apply rounded-2xl overflow-hidden hover:border-main border border-b-main duration-700 transition;
+  }
+  .cate-card {
+    @apply p-5 border-2 border-secondary-light   border-b-main hover:border-main rounded-xl  hover:-translate-y-2 duration-500;
+  }
+  .home-form-img {
+    @apply rounded-full overflow-hidden border-4 border-secondary-strong shadow-lg shadow-secondary-strong size-10;
+  }
+  .recent-card {
+    @apply rounded-3xl bg-secondary-strong border-secondary-light border cursor-pointer hover:border-main hover:-translate-y-2 transition;
+  }
+  .filter-card {
+    @apply rounded-xl  font-bold py-2 px-3 text-sm  bg-secondary-strong border border-secondary-light text-secondary hover:border-main-subtle active:border-white ;
+  }
+  .blog-btn{
+    @apply bg-main flex justify-center items-center text-lg transition size-10 rounded-xl text-white border-2 border-transparent hover:border-main hover:bg-main-subtle hover:scale-110 has-checked:bg-main-subtle has-checked:border-main
+  }
+}
