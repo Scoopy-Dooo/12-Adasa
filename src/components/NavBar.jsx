@@ -1,6 +1,6 @@
-import { Link, NavLink } from 'react-router';
-import logo from '../assets/Images/logo.png';
 import { useState } from 'react';
+import { NavLink } from 'react-router';
+import logo from '../assets/Images/logo.png';
 
 export default function NavBar() {
   const [navBG, setNavBG] = useState("bg-secondary-strong")
@@ -12,10 +12,10 @@ export default function NavBar() {
   }
   function changeNavBG() {
     window.scrollY < 100 ? setNavBG("bg-secondary-strong") : setNavBG("bg-secondary-strong/85")
-
-    // console.log(window.scrollY);
   }
+
   window.addEventListener("scroll", changeNavBG)
+
   return (
     <nav onScroll={e => changeNavBG(e)} className={`${navBG} backdrop-blur-xl fixed w-full z-30 top-0 start-0 border border-b-main-strong`}>
       <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
