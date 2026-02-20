@@ -9,7 +9,6 @@
     color: var(--color-white);
     background-color: var(--color-main);
   }
-  @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
   img {
     width: 100%;
   }
