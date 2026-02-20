@@ -5,16 +5,15 @@ A modern and responsive web application built with **React**, focused on clean U
 ---
 
 ## 🌐 Live Demo
-🔗 https://your-live-demo-link.netlify.app  
-*(استبدل الرابط برابط الـ Deploy الحقيقي)*
+🔗 https://sco-adasa.netlify.app  
+
 
 ---
 
 ## 📝 About the Project
 
-**Adasa** is a frontend web application developed using **React**.  
+**Adasa** is my first frontend web application developed using **React**.  
 The project demonstrates component-based architecture, clean folder structure, and responsive design principles.
-
 It is suitable as a portfolio project to showcase React fundamentals and frontend development skills.
 
 ---
@@ -37,6 +36,7 @@ It is suitable as a portfolio project to showcase React fundamentals and fronten
 - Responsive layout (Mobile / Tablet / Desktop)  
 - Fast and lightweight UI  
 - Easy to extend and maintain  
+- SPA ✔️
 
 ---
 
@@ -48,7 +48,8 @@ It is suitable as a portfolio project to showcase React fundamentals and fronten
 │   └── index.html
 ├── src/
 │   ├── Components/      # Reusable components
-│   │        ├── Pages/           # Page components
+│   │        ├── Pages/           
+│   │        │   └──      # Page components  
 │   │        └── card/           # card components
 │   │            └── all card
 │   ├── assets/          # Images & static files
