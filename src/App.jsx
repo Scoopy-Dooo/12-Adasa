@@ -15,7 +15,7 @@ export default function App() {
         { path: "/", element: <Home /> },
         { path: "/home", element: <Home /> },
         { path: "/blog", element: <Blog /> },
-        // { path: "/blog/:category", element: <Blog /> },
+        { path: "/blog?category=:category", element: <Blog /> },
         { path: "/blog/:post", element: <BlogDetails /> },
         { path: "about", element: <About /> },
         { path: "*", element: <Handler404 /> },

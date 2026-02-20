@@ -11,8 +11,5 @@ export default function SiteInfo() {
             linkedin: "https://linkedin.com/company/adasah",
             youtube: "https://youtube.com/@adasah"
         }
-    }
-    return (
-        <div>SiteInfo {siteInfo.name}</div>
-    )
+    } 
 }

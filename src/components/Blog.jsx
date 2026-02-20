@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import RecentCard from './Cards/RecentCard';
 import Categories from './myData/Categories';
 import Posts from './myData/Posts';
@@ -9,10 +10,12 @@ export default function Blog() {
   const [view, setView] = useState("grid")
   const [page, setPage] = useState(1)
 
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get("category");
+
   const posts = Posts({ postsIDs: "all" })
   const myCategories = Categories("all")
   let wantedPosts = []
-
   function removeFilter(e) {
     setBlogFilter("all")
     e.target.closest("p").className.add("hidden")
@@ -26,27 +29,32 @@ export default function Blog() {
   // ? pagination functions
   function handlePage(e) {
     let x = Number(e.target.value)
-    console.log('x : ', x);
     setPage(x)
-    console.log("🚀 ~ handlePage ~ page:", page)
   }
   function prevPage() {
     page != 1 ? setPage(page - 1) : setPage(5)
-    console.log("🚀 ~ handlePage ~ new page:", page)
   }
   function nextPage() {
     page != 5 ? setPage(page + 1) : setPage(1)
-    console.log("🚀 ~ handlePage ~ new page:", page)
   }
 
   if (blogFilter == "all") {
     wantedPosts = posts
   } else { wantedPosts = posts.filter((post) => post.category === blogFilter) }
+
+  useEffect(() => {
+    if (category) {
+      setBlogFilter(category)
+    }
+    window.scrollTo(0, 0, { behavior: 'smooth' })
+  }, [category])
+
   return (
     <>
       <header className="w-full py-10 mt-4 relative ">
         <div className="z-[-3] absolute bg-[rgb(15,14,10)]  inset-0 bg-[linear-gradient(rgba(38,38,38,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(38,38,38,0.5)_1px,transparent_1px)] bg-size-[60px_60px]">
           <div className="absolute top-0 end-100  size-90 rounded-full bg-main-subtle blur-3xl "></div>
+          <div className="absolute top-0 start-100  size-90 rounded-full bg-yellow-400/10 blur-3xl "></div>
         </div>
         <div className='myContainer z-10 py-10 flex flex-col gap-8 justify-center items-center md:max-w-1/2 text-center'>
           <div className="bg-main-subtle text-sm rounded-full px-5 py-2 text-main w-fit border-main-subtle border-2">
@@ -65,7 +73,7 @@ export default function Blog() {
 
         </div>
       </header>
-      <section id='blog-filters' className='sticky z-20 top-20 border-b  border-b-secondary bg-black'>
+      <section id='blog-filters' className=' sticky z-20 top-20 border-b  border-b-secondary bg-black'>
         <div className="myContainer  py-5">
           <div className=' flex max-md:flex-col gap-3 justify-between items-center'>
             <div className="blog-search  md:w-1/3 w-full">
@@ -77,11 +85,11 @@ export default function Blog() {
               </div>
             </div>
             <div className="blog-categories  justify-center text-white flex flex-wrap gap-2 items-center">
-              <button name="all" onClick={e => setBlogFilter(e.target.name)} key="all" type="button" className={`filter-card text-nowrap ${blogFilter == "all" && "bg-main text-white"}`}>جميع المقالات</button>
+              <Link to={"/blog"}><button name="all" onClick={e => setBlogFilter(e.target.name)} key="all" type="button" className={`filter-card text-nowrap ${blogFilter == "all" && "bg-main text-white"}`}>جميع المقالات</button></Link>
               {
                 myCategories.map((categ) => {
                   return (
-                    <button name={categ.name} onClick={e => setBlogFilter(e.target.name)} key={categ.key} type="button" className={`filter-card text-nowrap ${blogFilter == categ.name && "bg-main text-white"}`}>{categ.name}</button>
+                    <Link key={categ.key} to={"/blog?category=" + categ.name}><button name={categ.name} onClick={e => setBlogFilter(e.target.name)} type="button" className={`filter-card text-nowrap ${blogFilter == categ.name && "bg-main text-white"}`}>{categ.name}</button></Link>
                   )
                 })
               }
@@ -105,10 +113,10 @@ export default function Blog() {
             </div>
           </div>
 
-          <div className={`end grid  ${view == "list" ? "grid-cols-1" : "grid-cols-2 md:grid-cols-2 lg:grid-cols-3"} mt-10 gap-8`}>
+          <div className={`end grid  ${view == "list" ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"} mt-10 gap-8`}>
             <RecentCard page={blogFilter == "all" ? page : null} view={view} search={blogSearch} category={blogFilter} />
           </div>
-          
+
           {blogFilter == "all" && <><div className='flex items-center justify-center gap-2 mt-10 py-2  '>
             <button onClick={prevPage} type="button" className='blog-btn border-main bg-main-strong hover:bg-main'><i className="fa-solid fa-angle-right"></i></button>
             <label className='blog-btn'>1<input onChange={((e) => handlePage(e))} checked={page == 1} className='hidden' type="radio" name="pageNumber" value="1" /></label>

@@ -1,6 +1,5 @@
 
 export default function AuthorCard({ authors }) {
-    console.log("🚀 ~ AuthorCard ~ data:", authors[1])
 
     return authors.map(author => {
         return <div key={author.name} className="text-center group/author border border-secondary-light hover:border-main-subtle bg-secondary-strong rounded-3xl p-6 ">

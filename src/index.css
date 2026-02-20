@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @layer base {
   body {
     font-family: "Tajawal", sans-serif;
@@ -7,16 +8,38 @@
   ::selection {
     color: var(--color-white);
     background-color: var(--color-main);
-    @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
   }
+  @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
   img {
     width: 100%;
   }
+
+  /* ? scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000;
+
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-main);
+  }
 }
+
 @theme {
   --color-main-half: #fa9a1d;
   --color-main: #f97316;
   --color-main-subtle: #f9731620;
+  --color-main-light: #f9741696;
   --color-main-strong: #ea580c;
   --color-secondary: #737373;
   --color-secondary-strong: #161616;
@@ -26,6 +49,7 @@
   --color-blue-500: #2b7fff;
   --color-orange-600: #f54900;
 }
+
 @layer utilities {
   .font-tajawal {
     font-family: "Tajawal", sans-serif;
@@ -36,7 +60,10 @@
     @apply container mx-auto max-w-7xl px-4;
   }
   .link {
-    @apply block px-5 py-2 m-0 rounded-xl md:hover:text-gray-200 max-md:hover:bg-secondary-light max-md:hover:text-white cursor-pointer  max-md:mt-1 md:rounded-full text-secondary md:border-0 active:bg-main max-md:active:text-main-strong active:text-white max-md:active:border-main max-md:active:bg-main-subtle max-md:active:border;
+    @apply block px-5 py-2 m-0 rounded-xl md:hover:text-gray-200 max-md:hover:bg-secondary-light max-md:hover:text-white cursor-pointer  max-md:mt-1 md:rounded-full text-secondary md:border-0 ;
+  }
+  .active-link{
+    @apply bg-main max-md:text-main-strong text-white max-md:border-main max-md:bg-main-subtle max-md:border
   }
   .header-card {
     @apply py-5 rounded-3xl bg-secondary-strong border border-secondary-light shadow-2xs shadow-main  hover:scale-105 duration-500;
@@ -54,9 +81,12 @@
     @apply rounded-3xl bg-secondary-strong border-secondary-light border cursor-pointer hover:border-main hover:-translate-y-2 transition;
   }
   .filter-card {
-    @apply rounded-xl  font-bold py-2 px-3 text-sm  bg-secondary-strong border border-secondary-light text-secondary hover:border-main-subtle active:border-white ;
+    @apply rounded-xl  font-bold py-2 px-3 text-sm  bg-secondary-strong border border-secondary-light text-secondary hover:border-main-subtle active:border-white;
   }
-  .blog-btn{
-    @apply bg-main flex justify-center items-center text-lg transition size-10 rounded-xl text-white border-2 border-transparent hover:border-main hover:bg-main-subtle hover:scale-110 has-checked:bg-main-subtle has-checked:border-main
+  .blog-btn {
+    @apply bg-main flex justify-center items-center text-lg transition size-10 rounded-xl text-white border-2 border-transparent hover:border-main hover:bg-main-subtle hover:scale-110 has-checked:bg-main-subtle has-checked:border-main;
+  }
+  .blog-card {
+    @apply rounded-2xl p-5 border border-secondary-light bg-secondary-strong text-secondary;
   }
 }

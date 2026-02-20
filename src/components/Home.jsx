@@ -12,18 +12,20 @@ export default function Home() {
       {/* header */}
       <header className="w-full py-10 mt-4 relative ">
         <div className="z-[-3] absolute bg-[rgb(15,14,10)]  inset-0 bg-[linear-gradient(rgba(38,38,38,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(38,38,38,0.5)_1px,transparent_1px)] bg-size-[60px_60px]"></div>
+        <div className="absolute -z-1 end-32 size-80 rounded-full bg-main-subtle blur-3xl"></div>
+        <div className="absolute -z-1 start-32 bottom-10 size-80 rounded-full bg-main-subtle/50 blur-3xl"></div>
         <div className='myContainer z-10 py-10 flex flex-col gap-12 justify-center items-center md:max-w-1/2 text-center'>
           <div className="bg-main-subtle text-sm rounded-full p-3 text-white w-fit border-main border">
             <span className='align-middle bg-main inline-block size-2 rounded-full animate-pulse'></span><div className=" ms-1 inline-block align-middle relative bg-main rounded-full size-2"><span className='inset-0 align-middle absolute bg-main inline-block size-2  animate-ping rounded-full'></span></div>        مرحباً بك في عدسة
           </div>
-          <h1 className='leading-20 text-center font-bold text-7xl block text-white'>
+          <h1 className=' leading-20  text-center font-bold text-6xl md:text-7xl block text-white'>
             اكتشف <span className='text-main-half'> فن </span>
             <br />        التصوير الفوتوغرافي
           </h1>
           <p className='text-secondary text-2xl'>انغمس في أسرار المحترفين ونصائح عملية لتطوير مهاراتك في التصوير.
           </p>
           <div className=' max-sm:flex-col flex gap-3 w-full justify-center'>
-            <button className='w-full sm:w-fit px-8 bg-main text-white p-4 max-sm:w-full rounded-full group/header hover:-translate-y-2 transition'>استكشف المقالات<i className="fa-solid group-hover/header:-translate-x-2 duration-700 fa-arrow-left"></i></button>
+            <Link to="/blog"><button className='cursor-pointer w-full sm:w-fit px-8 bg-main text-white p-4 max-sm:w-full rounded-full group/header hover:-translate-y-2 transition'>استكشف المقالات<i className="fa-solid group-hover/header:-translate-x-2 duration-700 fa-arrow-left"></i></button></Link>
             <button className='w-full sm:w-fit px-8 bg-transparent p-4 max-sm:w-full rounded-full border border-secondary hover:text-main hover:border-main hover:bg-main-subtle transition text-white'><span className=' border-2 inline-flex rounded-full me-1 size-4 text-center align-middle justify-center items-center '><i className="align-middle fa-solid fa-info text-xs"></i></span>اعرف المزيد</button>
           </div>
           <div className='grid grid-cols-2 md:grid-cols-4 gap-3 w-full text-center'>

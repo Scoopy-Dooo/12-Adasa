@@ -2,37 +2,12 @@ import React from 'react'
 import Posts from './../myData/Posts';
 import { NavLink } from 'react-router';
 export default function ChosenCard({ postsIDs }) {
-
-  // console.log( '<Posts postsIDs={postsIDs} /> : ',);
-
-  // console.log('recent in chosencard : ', recent);
-  // if (recent) {
-  //   console.log('recent : ', recent);
-  //   return (
-  //     <Posts postsIDs={recent} />
-  //   )
-  // }
-  // if (random) {
-  //   console.log('random : ', random);
-  //   return (
-  //   )
-  // }
-
-  // console.log( 'postsIDs : ',postsIDs);
-  // console.log( 'wantedPosts : ',wantedPosts);
-  // return (
-  // <Posts postsIDs={[1, 2, 3]} />
-  // )
-
-
-
   let data = {
     postsIDs: postsIDs
   }
-  console.log('postsIDs in  chosenCard : ', postsIDs);
-
+  
   let wantedPosts = Posts(data)
-
+  
   return (
     <>
       {wantedPosts.map((post) => {

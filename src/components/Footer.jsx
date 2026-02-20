@@ -1,13 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import Categories from './myData/Categories'
 
 export default function Footer() {
     return (
-        <footer className='border-t border-secondary-light py-4 bg-black text-secondary'>
+        <footer className='border-t relative z-1 border-secondary-light py-4 bg-black text-secondary'>
+        <div className="absolute -z-1 end-1/4 bottom-10 size-100 rounded-full bg-main/10 blur-3xl"></div>
+        <div className="absolute -z-1 start-1/4 bottom-5 size-100 rounded-full bg-yellow-500/10 blur-3xl"></div>
 
             <div className="myContainer py-7 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
 
                 <div className="">
-                    <h3 className='text-white'><span className='p-3 bg-main rounded-md'>ع</span> عدسة</h3>
+                    <h3 className='text-white flex items-center gap-2'><span className=' flex items-end p-1 size-10 bg-main-strong rounded-xl text-lg font-semibold justify-center'>ع</span> عدسة</h3>
                     <p className="text-secondary mt-8">مدونة متخصصة في فن التصوير الفوتوغرافي، نشارك معكم أسرار المحترفين ونصائح عملية لتطوير مهاراتكم.</p>
                     <div className='flex gap-3 mt-5 ps-2 '>
                         <span className='rounded-md hover:scale-110 bg-secondary-strong border-[0.5px] border-secondary-light hover:text-white text-secondary hover:bg-main p-2 '><a href="#"><i className="fa-brands text-lg fa-x-twitter"></i></a></span>
@@ -20,54 +24,39 @@ export default function Footer() {
                     <p className='self-center mb-1 inline-block w-10 h-0.5 linear rounded-4xl bg-main me-2'></p>
                     <h3 className='inline text-white'>استكشف</h3>
                     <div className='mt-5 overflow-hidden'>
-                        <a className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition ' href="">
+                        <Link to={"/home"}  className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition ' >
                             <span className=''>
                                 <i className="fa-solid fa-angle-left"></i>
                             </span>
                             الرئيسية
-                        </a>
-                        <a className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition ' href="">
+                        </Link>
+                        <Link to={"/blog"} className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition ' >
                             <span className=''>
                                 <i className="fa-solid fa-angle-left"></i>
                             </span>
                             المدونة
-                        </a>
-                        <a className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition ' href="">
+                        </Link>
+                        <Link to={"/about"} className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition ' >
                             <span className=''>
                                 <i className="fa-solid fa-angle-left"></i>
                             </span>
                             من نحن
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="">
                     <p className='self-center mb-1 inline-block w-10 h-0.5 linear rounded-4xl bg-main me-2'></p>
                     <h3 className='inline text-white'>التصنيفات</h3>
                     <div className='mt-5 overflow-hidden'>
-                        <a className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition ' href="">
-                            <span className=''>
-                                <i className="fa-solid fa-angle-left"></i>
-                            </span>
-                            إضاءة
-                        </a>
-                        <a className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition ' href="">
-                            <span className=''>
-                                <i className="fa-solid fa-angle-left"></i>
-                            </span>
-                            بورتريه
-                        </a>
-                        <a className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition ' href="">
-                            <span className=''>
-                                <i className="fa-solid fa-angle-left"></i>
-                            </span>
-                            مناظر طبيعية
-                        </a>
-                        <a className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition ' href="">
-                            <span className=''>
-                                <i className="fa-solid fa-angle-left"></i>
-                            </span>
-                            تقنيات
-                        </a>
+                        {Categories("all").map(categ => {
+                            return <Link key={categ.key} to={"/blog?category=" + categ.name} className='block hover:translate-x-0 my-3 translate-x-5 duration-700 hover:text-main text-secondary transition '>
+                                <span className=''>
+                                    <i className="fa-solid fa-angle-left"></i>
+                                </span>
+                                {categ.name}
+                            </Link>
+                        })}
+
                     </div>
                 </div>
                 <div className="">
@@ -86,8 +75,8 @@ export default function Footer() {
                 <div className="myContainer flex justify-between pt-4">
                     <div>© 2026 عدسة .صنع بكل <i className="fa-solid fa-heart text-main"></i>جميع الحقوق محفوطة.</div>
                     <div className='flex gap-7'>
-                        <a className='text-secondary hover:text-main' href="/privacy">سياسة الخصوصية</a>
-                        <a className='text-secondary hover:text-main' href="/terms">شروط الخدمة</a>
+                        <Link className='text-secondary hover:text-main' to={"/"}>سياسة الخصوصية</Link>
+                        <Link className='text-secondary hover:text-main' to={"/"}>شروط الخدمة</Link>
                     </div>
                 </div>
             </div>

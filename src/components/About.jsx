@@ -7,12 +7,12 @@ export default function About() {
   const posts = Posts({ postsIDs: "all" })
   let authors = []
   posts.map(post => authors.push(post.author))
-  console.log('authors : ', authors);
 
   return <div className="about ">
     {/* header */}
     <header className="w-full py-10 mt-4 relative ">
       <div className="z-[-3] absolute bg-[rgb(15,14,10)]  inset-0 bg-[linear-gradient(rgba(38,38,38,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(38,38,38,0.5)_1px,transparent_1px)] bg-size-[60px_60px]"></div>
+      <div className="absolute top-20 end-30  size-90 rounded-full bg-main/10 blur-3xl "></div>
       <div className='myContainer z-10 py-10 flex flex-col gap-12 justify-center items-center md:max-w-3/5 text-center'>
         <div className="bg-main-subtle text-sm rounded-full px-3 py-2 text-main w-fit border-main-subtle border-2">
           <span className='align-middle bg-main inline-block size-2 rounded-full animate-pulse'></span><div className=" mx-1 inline-block align-middle relative bg-main rounded-full size-2"><span className='inset-0 align-middle absolute bg-main inline-block size-2  animate-ping rounded-full'></span></div>  من نحن
@@ -64,7 +64,7 @@ export default function About() {
               <h4 className='text-main text-3xl'><i className="fa-solid fa-bullseye"></i></h4>
               <p className='group-hover:text-main-half text-white text-2xl my-0.5 font-bold'>الجودة أولاً</p>
               <p className='text-secondary text-md'>محتوى مدروس ومكتوب بخبرة</p>
-            </div>  
+            </div>
           </div>
           <div className="header-card py-0 p-1 flex items-center overflow-hidden justify-center relative z-1 group hover:scale-100 hover:bg-main-subtle ">
             <div className="absolute group-hover:hidden w-[200%] h-10 z-0 animate-[spin_2s_linear_infinite] bg-linear-to-t from-main to-main-subtle m-1"></div>
@@ -102,7 +102,7 @@ export default function About() {
         <h2 className='text-white text-4xl font-bold my-3'>تعرف على كتابنا</h2>
         <p className='text-secondary text-lg '>فريقنا من المصورين والكتاب ذوي الخبرة شغوفون بمشاركة معرفتهم مع المجتمع.</p>
       </div>
-      <div className=' grid grid-cols-3 gap-6 myContainer lg:px-20 my-5'>
+      <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 myContainer lg:px-20 my-5'>
         <AuthorCard authors={authors} />
       </div>
     </section>
@@ -113,8 +113,8 @@ export default function About() {
       </div>
       <div className="max-md:flex-col my-5 flex justify-center gap-4 items-center ">
         <button className='py-4  px-6 rounded-xl text-white font-bold bg-black hover:-translate-y-1 transition'><i className="fa-solid fa-envelope me-2"></i> تواصل معنا</button>
-        <Link to={"/blog"}><button className='py-4  px-6 rounded-xl border text-white font-bold border-white bg-transparent hover:bg-white hover:text-black transition'>تصفح المقالات</button></Link>
+        <Link to={"/blog"}><button className='py-4 cursor-pointer px-6 rounded-xl border text-white font-bold border-white bg-transparent hover:bg-white hover:text-black transition'>تصفح المقالات</button></Link>
       </div>
     </section>
   </div>
-}
+} 
