@@ -71,9 +71,13 @@ export default function Footer() {
                 </div>
             </div>
             <div className='border-t border-gray-600 mt-10 '>
-                <div className="myContainer flex justify-between pt-4">
-                    <div>© 2026 عدسة .صنع بكل <i className="fa-solid fa-heart text-main"></i>جميع الحقوق محفوطة.</div>
-                    <div className='flex gap-7'>
+                <div className="myContainer sm:flex justify-between pt-4">
+                    <div>© 2026 عدسة .صنع بكل <i className="fa-solid fa-heart text-main"></i>
+                    <span className='max-sm:block'>بواسطة<span className=' text-main font-extrabold'> محمد سعد </span></span>
+                    
+                    <span className='max-sm:block'>جميع الحقوق محفوطة.</span>
+                    </div>
+                    <div className='flex gap-7 max-sm:mt-3'>
                         <Link className='text-secondary hover:text-main' to={"/"}>سياسة الخصوصية</Link>
                         <Link className='text-secondary hover:text-main' to={"/"}>شروط الخدمة</Link>
                     </div>
