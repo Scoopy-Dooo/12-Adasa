@@ -43,10 +43,6 @@
   --color-secondary: #737373;
   --color-secondary-strong: #161616;
   --color-secondary-light: #3f3f3f;
-  --color-green-500: #00c950;
-  --color-purple-500: #ad46ff;
-  --color-blue-500: #2b7fff;
-  --color-orange-600: #f54900;
 }
 
 @layer utilities {

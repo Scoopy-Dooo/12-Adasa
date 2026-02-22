@@ -1,6 +1,5 @@
-import React from 'react'
-import Posts from './../myData/Posts';
 import { Link } from 'react-router-dom';
+import Posts from './../myData/Posts';
 
 export default function RecentCard({ postsIDs, category, search, page, view }) {
 

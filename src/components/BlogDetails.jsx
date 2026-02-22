@@ -1,19 +1,20 @@
 import { useEffect } from "react";
-import Posts from "./myData/Posts";
 import { Link } from "react-router-dom";
 import RecentCard from "./Cards/RecentCard";
+import Posts from "./myData/Posts";
 
 
 export default function BlogDetails() {
     const url = window.location.pathname.split('/')
     const posts = Posts({ postsIDs: "all" })
     const post = posts?.find(post => post.slug == url[2])
+    const postHeader = post.content.shift()
+
     useEffect(() => {
         window.scrollTo(0, 0, { behavior: 'smooth' })
     }, [])
 
-    const postHeader = post.content.shift()
-    return <div className="blog-details w-full bg-secondary-strong mt-5">
+    return <div className="blog-details w-full bg-secondary-strong mt-3">
         <header style={{ "backgroundImage": `url(${post.image})` }}
             className="relative w-full h-[65vh] flex  flex-col justify-center items-center bg-center bg-cover bg-no-repeat  ">
             <div className="layer absolute inset-0 bg-linear-to-t from-black to-transparent "></div>
@@ -25,8 +26,8 @@ export default function BlogDetails() {
                 <p className="text-main">{post.category}</p>
             </div>
             <div className="relative z-2 myContainer  lg:w-3/4 flex flex-col gap-10 justify-between items-start">
-                <div className="flex gap-3 text-white items-center ">
-                    <Link to={"/blog?category=" + post.category}><p className="bg-main hover:bg-main-strong transition  px-3 py-2 rounded-full ">{post.category}</p></Link>
+                <div className="flex sm:gap-3 gap-1 flex-wrap max-sm:pt-10 text-nowrap text-white items-center ">
+                    <Link className="max-sm:w-full" to={"/blog?category=" + post.category}><p className="bg-main text-center hover:bg-main-strong transition  px-3 py-1 sm:py-2 rounded-full ">{post.category}</p></Link>
                     <p className="text-sm"><i className="fa-regular me-1 fa-calendar"></i>{post.date}</p>
                     <p className="text-sm"><i className="fa-regular me-1 fa-clock"></i>{post.readTime}</p>
                 </div>
@@ -44,18 +45,18 @@ export default function BlogDetails() {
         </header>
         <section className="post-details w-full py-5 bg-black ">
             <div className="myContainer py-5 my-2 px-5 max-md:flex-col flex gap-5">
-                <div className="flex-8 order-2">
+                <div className="flex-8 max-sm:order-2">
                     <div className=" flex flex-col gap-8">
                         <p className="bg-main-subtle  w-full border rounded-xl border-main-subtle p-5 text-white text-lg italic">{post.title}</p>
                         <p className="text-white ">{postHeader[0]}</p>
                     </div>
                     {post.content.map((p, i) => {
                         return <div id={p[0]} key={i} className="py-3 scroll-m-24">
-                            <h3 className="my-4 text-white text-3xl font-extrabold">
+                            <h3 className="sm:my-4 my-0 text-white sm:text-3xl text-xl font-extrabold">
                                 <span className="inline-block me-2 bg-main-subtle text-main border rounded-xl text-4xl border-main-subtle"><i className="fa-solid fa-camera"></i></span>
                                 {p[0]}
                             </h3>
-                            <p className="text-white text-lg mt-5">{p[1]}</p>
+                            <p className="text-white sm:text-lg text-sm mt-5">{p[1]}</p>
                         </div>
                     })}
                     <div className="blog-card ">
@@ -65,11 +66,11 @@ export default function BlogDetails() {
                         </div>
                         <div className="flex gap-3 mt-4 ">
                             {post.tags.map(t => {
-                                return <p key={t} className="text-xs bg-secondary-strong/20 font-semibold rounded-full px-3 py-2 border border-secondary-light hover:text-main hover:bg-main-subtle hover:border-main-subtle transition cursor-pointer">#{t}</p>
+                                return <p key={t} className="text-xs bg-secondary-strong/20 font-semibold rounded-full sm:px-3 px-2 text-nowrap sm:py-2 py-1  border border-secondary-light hover:text-main hover:bg-main-subtle hover:border-main-subtle transition cursor-pointer">#{t}</p>
                             })}
                         </div>
                     </div>
-                    <div className="blog-card my-5 flex justify-between items-center">
+                    <div className="blog-card my-5 flex max-sm:flex-col  gap-3 justify-between sm:items-center items-start">
                         <div className="flex text-white items-center">
                             <span className="flex me-2 size-9 rounded-md justify-center items-center text-main-strong border-main-subtle bg-main-subtle"><i className="fa-solid fa-share-nodes"></i></span>
                             <h3 className="text-white font-bold text-lg">شارك المقال</h3>
@@ -81,7 +82,7 @@ export default function BlogDetails() {
                             <a href="https://www.github.com" className=" hover:text-white bg-secondary-strong/20 hover:bg-main rounded-xl size-10 border border-secondary-light flex justify-center items-center transition"><i className="fa-solid fa-link"></i></a>
                         </div>
                     </div>
-                    <div className="blog-card my-5 flex max-md:flex-col max-md:justify-center items-center  gap-4">
+                    <div className="blog-card mt-5 flex max-md:flex-col max-md:justify-center items-center  gap-4">
                         <div className="img overflow-hidden rounded-xl border-3 border-main/50 size-24">
                             <img className="w-full object-cover" src={post.author.avatar} alt={post.author.name} />
                         </div>
@@ -136,8 +137,8 @@ export default function BlogDetails() {
         </section>
         <section className="you-may-like py-8 bg-black ">
             <div className="myContainer  border-t border-secondary-light py-5 ">
-                <div className="top flex justify-between items-center py-5">
-                    <div className="flex gap-2 items-center">
+                <div className="top flex max-sm:flex-col justify-between items-start sm:items-center gap-3 py-5">
+                    <div className="flex  gap-2 items-center">
                         <span className="size-12 flex text-xl items-center justify-center text-main-strong border border-main/50 rounded-xl bg-main-subtle"><i className="fa-solid fa-images"></i></span>
                         <div className="">
                             <h3 className="text-white leading-8 font-bold text-xl">مقالات قد تعجبك</h3>
@@ -146,7 +147,7 @@ export default function BlogDetails() {
                     </div>
                     <Link to="/blog" className="flex group hover:text-main-half text-main items-center">
                         <p className="">عرض الكل</p>
-                        <span className="group-hover:-translate-x-3 flex items-center ms-2"><i className=" fa-solid fa-arrow-left"></i></span>
+                        <span className="group-hover:-translate-x-3 flex items-center ms-2 transition"><i className=" fa-solid fa-arrow-left"></i></span>
                     </Link>
                 </div>
                 <div className="recent-cards fy-blogs grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-8">

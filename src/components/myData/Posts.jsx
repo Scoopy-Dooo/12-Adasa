@@ -1,7 +1,3 @@
-import React from 'react'
-import { NavLink } from 'react-router';
-import Home from './../Home';
-import Blog from './../Blog';
 
 
 export default function Posts({ postsIDs, category }) {

@@ -1,12 +1,11 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import Categories from './myData/Categories'
 
 export default function Footer() {
     return (
-        <footer className='border-t relative z-1 border-secondary-light py-4 bg-black text-secondary'>
-        <div className="absolute -z-1 end-1/4 bottom-10 size-100 rounded-full bg-main/10 blur-3xl"></div>
-        <div className="absolute -z-1 start-1/4 bottom-5 size-100 rounded-full bg-yellow-500/10 blur-3xl"></div>
+        <footer className='border-t relative z-1 border-secondary-light py-4 bg-black text-secondary overflow-hidden'>
+        <div className=" absolute -z-1 end-1/4 bottom-10 md:size-100 size-40 rounded-full bg-main/10 blur-3xl"></div>
+        <div className=" absolute -z-1 start-1/4 bottom-5 md:size-100 size-40 rounded-full bg-yellow-500/10 blur-3xl"></div>
 
             <div className="myContainer py-7 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
 

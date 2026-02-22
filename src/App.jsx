@@ -1,11 +1,10 @@
-import React from 'react'
-import Layout from './components/Layout.jsx';
 import { RouterProvider, createBrowserRouter } from 'react-router';
-import Home from './components/Home';
-import Handler404 from './components/Handler404';
 import About from './components/About';
 import Blog from './components/Blog';
 import BlogDetails from './components/BlogDetails.jsx';
+import Handler404 from './components/Handler404';
+import Home from './components/Home';
+import Layout from './components/Layout.jsx';
 
 
 export default function App() {
@@ -26,4 +25,3 @@ export default function App() {
     <RouterProvider router={routes} />
   )
 }
-

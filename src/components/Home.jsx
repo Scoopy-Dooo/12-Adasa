@@ -1,24 +1,22 @@
-import React from 'react'
-import Posts from './myData/Posts';
-import Categories from './myData/Categories';
+import { Link } from 'react-router';
 import ChosenCard from './Cards/chosenCard';
 import RecentCard from './Cards/RecentCard';
-import { Link } from 'react-router';
+import Categories from './myData/Categories';
 
 export default function Home() {
   const myCategories = Categories("all")
   return (
     <>
       {/* header */}
-      <header className="w-full py-10 mt-4 relative ">
+      <header className="overflow-hidden w-full py-10 mt-4 relative ">
         <div className="z-[-3] absolute bg-[rgb(15,14,10)]  inset-0 bg-[linear-gradient(rgba(38,38,38,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(38,38,38,0.5)_1px,transparent_1px)] bg-size-[60px_60px]"></div>
         <div className="absolute -z-1 end-32 size-80 rounded-full bg-main-subtle blur-3xl"></div>
         <div className="absolute -z-1 start-32 bottom-10 size-80 rounded-full bg-main-subtle/50 blur-3xl"></div>
-        <div className='myContainer z-10 py-10 flex flex-col gap-12 justify-center items-center md:max-w-1/2 text-center'>
+        <div className='myContainer z-20 py-10 flex flex-col md:gap-12 gap-8 justify-center items-center md:max-w-1/2 text-center'>
           <div className="bg-main-subtle text-sm rounded-full p-3 text-white w-fit border-main border">
             <span className='align-middle bg-main inline-block size-2 rounded-full animate-pulse'></span><div className=" ms-1 inline-block align-middle relative bg-main rounded-full size-2"><span className='inset-0 align-middle absolute bg-main inline-block size-2  animate-ping rounded-full'></span></div>        مرحباً بك في عدسة
           </div>
-          <h1 className=' leading-20  text-center font-bold text-6xl md:text-7xl block text-white'>
+          <h1 className=' md:leading-20 leading-15 text-center font-bold text-5xl sm:text-7xl block text-white'>
             اكتشف <span className='text-main-half'> فن </span>
             <br />        التصوير الفوتوغرافي
           </h1>
@@ -54,17 +52,17 @@ export default function Home() {
         </div>
       </header>
       {/* chosen blogs  */}
-      <section className='chosen-blogs py-8  bg-black bg-linear-to-l linear from-main-subtle to-black'>
+      <section className=' chosen-blogs py-8  bg-black bg-linear-to-l linear from-main-subtle to-black'>
         <div className="myContainer">
           <div className="top">
             <div className="bg-main-subtle text-sm rounded-full px-4 py-2 text-white w-fit border-main border">
               <span className='align-middle bg-main inline-block size-2 rounded-full animate-pulse'></span><div className=" mx-1 inline-block align-middle relative bg-main rounded-full size-2"><span className='inset-0 align-middle absolute bg-main inline-block size-2  animate-ping rounded-full'></span></div>
               مميز
             </div>
-            <h2 className='text-white text-6xl font-bold'>مقالات مختارة</h2>
-            <div className="flex justify-between mt-2 text-xl items-center">
+            <h2 className='text-white text-4xl sm:text-6xl font-bold'>مقالات مختارة</h2>
+            <div className="max-sm:flex-col flex justify-between mt-2 text-xl gap-2 sm:items-center items-start ">
               <p className="text-secondary ">محتوى منتقى لبدء رحلة تعلمك</p>
-              <button className="bg-linear-to-l from-main-strong to-main-half text-white p-3 px-4 rounded-xl group/chosenBtn hover:-translate-y-2 transition"> عرض الكل <i className="group-hover/chosenBtn:-translate-x-1 transition fa-solid fa-angle-left align-middle"></i></button>
+              <Link to={"/blog"}><button className=" bg-linear-to-l from-main-strong to-main-half text-white p-3 px-4 rounded-xl group/chosenBtn hover:-translate-y-2 transition"> عرض الكل <i className="group-hover/chosenBtn:-translate-x-1 transition fa-solid fa-angle-left align-middle"></i></button></Link>
             </div>
           </div>
           <div className="home-blogs py-8 flex flex-col gap-8 ">
@@ -73,21 +71,20 @@ export default function Home() {
         </div>
       </section>
       {/* main categories */}
-      <section className='main-categories bg-secondary-strong border-t border-secondary py-10'>
+      <section className=' main-categories bg-secondary-strong border-t border-secondary py-10'>
         <div className='myContainer w-4/5 py-3'>
           <div className="top text-center">
             <div className="m-auto bg-main-subtle text-sm rounded-full p-3 text-main w-fit border-main border">
               <span className='align-middle bg-main inline-block size-2 rounded-full animate-pulse'></span><div className=" ms-1 inline-block align-middle relative bg-main rounded-full size-2"><span className='inset-0 align-middle absolute bg-main inline-block size-2  animate-ping rounded-full'></span></div>        التصنيفات
             </div>
-            <h2 className='text-white text-6xl font-bold my-5'>استكشف حسب الموضوع</h2>
+            <h2 className='text-white text-3xl md:text-6xl font-bold my-5'>استكشف حسب الموضوع</h2>
             <p className='text-secondary text-xl '>اعثر على محتوى مصمم حسب اهتماماتك</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-5 ">
             <>
               {myCategories.map((cate) => {
-                let toBg = `to-${cate.color}`
                 return (
-                  <Link to={`/blog?category=${cate.name}`} key={cate.key} className={`cate-card group/cateCard hover:bg-linear-330 to-70% from-main-half ${toBg}`}>
+                  <Link to={`/blog?category=${cate.name}`} key={cate.key} className={`cate-card group/cateCard hover:bg-linear-330 to-70% to-main-half from-yellow-200`}>
                     <div className='z-3 flex items-baseline justify-between'>
                       <span className='text-main text-xl inline-block p-3 rounded-xl bg-main-subtle border group-hover/cateCard:text-white border-main-strong'>
                         <i className={`fa-solid ${cate.icon}`}></i>
@@ -100,7 +97,7 @@ export default function Home() {
               })}
             </>
           </div>
-        </  div>
+        </div>
       </section>
       {/* recent blogs */}
       <section className="recent-blogs bg-black bg-linear-to-r linear via-transparent from-main-subtle to-transparent py-10">

@@ -1,6 +1,5 @@
-import React from 'react'
-import Posts from './../myData/Posts';
 import { NavLink } from 'react-router';
+import Posts from './../myData/Posts';
 export default function ChosenCard({ postsIDs }) {
   let data = {
     postsIDs: postsIDs
@@ -41,7 +40,7 @@ export default function ChosenCard({ postsIDs }) {
                     </div>
                   </div>
                   <div className='flex items-center'>
-                    <span className='text-main group-hover/postCard:translate-x-1 duration-700 font-bold ease-out'>إقرأ المقال</span>
+                    <span className='text-main max-sm:text-nowrap max-sm:text-xs group-hover/postCard:translate-x-1 duration-700 font-bold ease-out'>إقرأ المقال</span>
                     <i className="fa-solid fa-arrow-left inline-block text-main ms-1 "></i>
                   </div>
                 </div>

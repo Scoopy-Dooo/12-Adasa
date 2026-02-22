@@ -1,7 +1,6 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 import AuthorCard from './Cards/AuthorCard'
 import Posts from './myData/Posts'
-import { Link } from 'react-router-dom'
 
 export default function About() {
   const posts = Posts({ postsIDs: "all" })
@@ -13,11 +12,11 @@ export default function About() {
     <header className="w-full py-10 mt-4 relative ">
       <div className="z-[-3] absolute bg-[rgb(15,14,10)]  inset-0 bg-[linear-gradient(rgba(38,38,38,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(38,38,38,0.5)_1px,transparent_1px)] bg-size-[60px_60px]"></div>
       <div className="absolute top-20 end-30  size-90 rounded-full bg-main/10 blur-3xl "></div>
-      <div className='myContainer z-10 py-10 flex flex-col gap-12 justify-center items-center md:max-w-3/5 text-center'>
+      <div className='myContainer z-10 py-10 flex flex-col gap-8 sm:gap-12 justify-center items-center md:max-w-3/5 text-center'>
         <div className="bg-main-subtle text-sm rounded-full px-3 py-2 text-main w-fit border-main-subtle border-2">
           <span className='align-middle bg-main inline-block size-2 rounded-full animate-pulse'></span><div className=" mx-1 inline-block align-middle relative bg-main rounded-full size-2"><span className='inset-0 align-middle absolute bg-main inline-block size-2  animate-ping rounded-full'></span></div>  من نحن
         </div>
-        <h1 className='text-center font-bold text-6xl block text-white'>
+        <h1 className='text-center font-bold text-4xl sm:text-6xl block text-white'>
           مهمتنا هي
           <span className='bg-linear-to-r to-main-half from-main-strong text-wrap text-transparent bg-clip-text '> الإعلام والإلهام </span>
         </h1>
